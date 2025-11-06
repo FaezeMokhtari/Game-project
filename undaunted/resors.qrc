@@ -1,1 +1,9 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>w.webp</file>
+        <file>ww.webp</file>
+        <file>www.webp</file>
+        <file>n.webp</file>
+        <file>nn.webp</file>
+    </qresource>
+</RCC>
