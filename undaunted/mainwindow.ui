@@ -12,9 +12,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1530</width>
-    <height>830</height>
+    <width>1382</width>
+    <height>702</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
@@ -57,10 +63,13 @@
    <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {
+    background-color: white;
+}
+</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -71,10 +80,34 @@
     <height>30</height>
    </size>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="widget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="font">
        <font>
         <family>W_adib</family>
@@ -91,28 +124,45 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="wellcome">
-       <property name="maximumSize">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
         <size>
-         <width>1508</width>
-         <height>732</height>
+         <width>0</width>
+         <height>0</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#wellcome {
+   background-image: url(:/new/prefix1/www.webp);
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: contain;
+         background-attachment: fixed;
+
+}
+</string>
        </property>
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>670</x>
-          <y>610</y>
-          <width>171</width>
-          <height>51</height>
+          <x>580</x>
+          <y>400</y>
+          <width>321</width>
+          <height>101</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Sitka</family>
-          <pointsize>28</pointsize>
+          <family>Gill Sans</family>
+          <pointsize>50</pointsize>
           <bold>true</bold>
          </font>
         </property>
@@ -144,79 +194,48 @@ QPushButton:pressed {
        </widget>
       </widget>
       <widget class="QWidget" name="page">
+       <property name="styleSheet">
+        <string notr="true">#page {
+        background-image: url(:/new/prefix1/nn.webp);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-attachment: fixed;
+        }</string>
+       </property>
        <widget class="QLineEdit" name="lineEdit">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>370</y>
-          <width>281</width>
-          <height>61</height>
+          <x>290</x>
+          <y>510</y>
+          <width>331</width>
+          <height>71</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <family>W_adib</family>
-          <pointsize>20</pointsize>
+          <pointsize>30</pointsize>
           <bold>false</bold>
          </font>
         </property>
         <property name="text">
          <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>170</y>
-          <width>241</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>W_adib</family>
-          <pointsize>40</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>player1</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>1040</x>
-          <y>170</y>
-          <width>251</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>W_adib</family>
-          <pointsize>40</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>player2</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEdit_2">
         <property name="geometry">
          <rect>
-          <x>980</x>
-          <y>360</y>
-          <width>291</width>
-          <height>61</height>
+          <x>820</x>
+          <y>510</y>
+          <width>311</width>
+          <height>71</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <family>W_adib</family>
-          <pointsize>20</pointsize>
+          <pointsize>30</pointsize>
           <bold>false</bold>
          </font>
         </property>
@@ -224,65 +243,52 @@ QPushButton:pressed {
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="label_6">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>300</y>
-          <width>241</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>W_adib</family>
-          <pointsize>20</pointsize>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>enter your name:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>980</x>
-          <y>300</y>
-          <width>241</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>W_adib</family>
-          <pointsize>20</pointsize>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>enter your name:</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_1">
         <property name="geometry">
          <rect>
-          <x>1410</x>
-          <y>690</y>
-          <width>83</width>
-          <height>31</height>
+          <x>550</x>
+          <y>680</y>
+          <width>351</width>
+          <height>91</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <family>W_afrigha</family>
+          <pointsize>50</pointsize>
+          <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #F3D9A4, stop: 1 #C49E60);
+    color: #3A220A;  /* پررنگ‌تر برای فونت */
+    border: 4px solid #3A220A;  /* ضخامت و تیرگی بیشتر حاشیه */
+    border-radius: 18px;  /* گوشه‌های گردتر و نرم‌تر */
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #F8E3B6, stop: 1 #B88C4E);
+    border: 4px solid #2A1607;
+    color: #2A1607;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #B88C4E, stop: 1 #8B6A3E);
+    border: 4px solid #1E0E03;
+    color: #1E0E03;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+</string>
         </property>
         <property name="text">
-         <string>next</string>
+         <string>continue</string>
         </property>
        </widget>
       </widget>
@@ -302,7 +308,6 @@ QPushButton:pressed {
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
