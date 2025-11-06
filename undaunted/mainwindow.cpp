@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QString>
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,16 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->showMaximized();
 
 
-    ui->wellcome->setStyleSheet("background-image: url(:/new/prefix1/w.png);"
-                                "background-repeat: no-repeat;"
-                                "background-position: center;"
-                                "background-size: cover;");
-
-
-    ui->page->setStyleSheet("background-image: url(:/new/prefix2/sec.png);"
-                             "background-repeat: no-repeat;"
-                             "background-position: center;"
-                             "background-size: cover;");
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -43,3 +34,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
+
