@@ -293,14 +293,34 @@ QPushButton:pressed {
        </widget>
       </widget>
       <widget class="QWidget" name="game">
+       <property name="styleSheet">
+        <string notr="true">#game {
+   background-image: url(:/new/prefix1/g.webp);
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: contain;
+         background-attachment: fixed;
+
+}</string>
+       </property>
        <widget class="QGraphicsView" name="game_2">
         <property name="geometry">
          <rect>
-          <x>200</x>
-          <y>120</y>
-          <width>1101</width>
-          <height>581</height>
+          <x>190</x>
+          <y>50</y>
+          <width>1131</width>
+          <height>651</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QGraphicsView {
+    border: none;
+    background-image: url(:/new/prefix1/g.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content;
+}
+</string>
         </property>
        </widget>
       </widget>
