@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QString>
-
+#include "board.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,6 +11,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->showMaximized();
 
+    QGraphicsScene* scene = new QGraphicsScene(this);
+    ui->game_2->setScene(scene);
+    ui->game_2->setRenderHint(QPainter::Antialiasing);
+
+    board* nboard = new board();
+    nboard->graphic(scene,nboard->pars("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/1.txt"));
+    setWindowState(windowState() | Qt::WindowMaximized);
 
 }
 
