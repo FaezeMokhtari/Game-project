@@ -22,7 +22,7 @@ private:
     QPen borderPen;
     float width = 90;
     float height = 120;
-    float cornerRadius = 15;
+    float cornerRadius = 10;
 };
 
 #endif // RGRAPHIC_H
