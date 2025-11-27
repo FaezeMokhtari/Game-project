@@ -15,7 +15,7 @@ Rgraphic::Rgraphic(rectangle* m, QGraphicsItem* parent)
 
     updateAppearance();
 
-    float spacing = 5;
+    float spacing = 3;
     float xPos = model->x * (width + spacing);
     float yPos = model->y * (height + spacing);
 
