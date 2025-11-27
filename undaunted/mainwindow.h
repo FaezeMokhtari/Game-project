@@ -24,6 +24,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void showerror();
+    bool isValid(const QString& name, QString &errorMsg);
 
 };
 #endif // MAINWINDOW_H
