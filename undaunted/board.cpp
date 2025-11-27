@@ -7,14 +7,13 @@
 
 board::board() : scene() {}
 
-QVector<cell*> board::pars(const QString& filename)
+void board::pars(const QString& filename)
 {
-    QVector<cell*> grid;
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Cannot open file:" << filename;
-        return grid;
+        return ;
     }
 
     QTextStream in(&file);
@@ -28,18 +27,16 @@ QVector<cell*> board::pars(const QString& filename)
     file.close();
 
     for (int visualRow = 0; visualRow < lines.size(); ++visualRow) {
+
         QString line = lines[visualRow];
 
         QStringList tokens = line.split("|", Qt::SkipEmptyParts);
 
+        int x = 0;
 
-        int colOffset = (visualRow % 2 == 0) ? 0 : 0;
-        int x = colOffset;
-
-        for (const QString& t : tokens) {
-            QString trimmed = t.trimmed();
+        for (int i = 0; i < tokens.size(); ++i) {
+            QString trimmed = tokens[i].trimmed();
             if (trimmed.isEmpty()) continue;
-
 
             QStringList parts = trimmed.split(":");
             if (parts.size() != 2) continue;
@@ -47,24 +44,26 @@ QVector<cell*> board::pars(const QString& filename)
             QString name = parts[0];
             int s = parts[1].toInt();
 
-            if (name.length() < 2) continue;
-            QChar r = ' ';
+            if (name.length() < 3) continue;
+
+            char r = name[0].toLatin1();
             int n = name.mid(1).toInt();
-            cell* c = new cell{ x, visualRow, n, s, ' ' };
+            cell* c = new cell{ x, visualRow, n, s, r};
             grid.push_back(c);
 
             x++;
-    }
+        }
+
  }
-    return grid;
+
 }
 
 
-void board::graphic(QGraphicsScene* scn, QVector<cell*> grid)
+void board::graphic(QGraphicsScene* scn)
 {
     scene = scn;
-    for (cell* c : grid) {
-        rectangle* r = new rectangle(c->n, c->x, c->y, c->s, c->r);
+    for (int i = 0; i < grid.size(); ++i) {
+        rectangle* r = new rectangle(grid[i]->n, grid[i]->x, grid[i]->y, grid[i]->s, grid[i]->r);
         R.push_back(r);
 
         Rgraphic* g = new Rgraphic(r);
@@ -74,16 +73,16 @@ void board::graphic(QGraphicsScene* scn, QVector<cell*> grid)
 
 board::~board()
 {
-    // حذف همه rectangleها
-    for (rectangle* r : R) {
-        delete r;
+
+    for (int i = 0; i < grid.size(); ++i) {
+        delete grid[i];
+    }
+    grid.clear();
+
+    for (int i = 0; i < R.size(); ++i) {
+        delete R[i];
     }
     R.clear();
 
-    // حذف همه cellها
-  //  for (cell* c : pars) {
-  //      delete c;
-  //  }
-  //  grid.clear();
 
 }
