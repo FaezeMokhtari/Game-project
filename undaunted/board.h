@@ -11,12 +11,13 @@ class board
 {
 public:
     QVector<rectangle*> R;
+    QVector<cell*> grid;
     QGraphicsScene* scene;
 
     board();
     ~board();
-    QVector<cell*> pars(const QString& mapText);
-    void graphic(QGraphicsScene* scene, QVector<cell*> grid);
+    void pars(const QString& mapText);
+    void graphic(QGraphicsScene* scene);
 };
 
 #endif // BOARD_H
