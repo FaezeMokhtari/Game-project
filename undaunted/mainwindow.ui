@@ -124,7 +124,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="wellcome">
        <property name="sizePolicy">
@@ -289,6 +289,44 @@ QPushButton:pressed {
         </property>
         <property name="text">
          <string>continue</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="errorLabel1">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>575</y>
+          <width>331</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Titr</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="errorLabel2">
+        <property name="geometry">
+         <rect>
+          <x>825</x>
+          <y>575</y>
+          <width>301</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Titr</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
         </property>
        </widget>
       </widget>
