@@ -124,7 +124,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="wellcome">
        <property name="sizePolicy">
@@ -330,6 +330,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="page_2"/>
       <widget class="QWidget" name="game">
        <property name="styleSheet">
         <string notr="true">#game {
@@ -350,6 +351,11 @@ QPushButton:pressed {
           <height>651</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QGraphicsView {
     border: none;
@@ -359,6 +365,53 @@ QPushButton:pressed {
     background-origin: content;
 }
 </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>185</x>
+          <y>700</y>
+          <width>250</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Nasim</family>
+          <pointsize>25</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #F3D9A4, stop: 1 #C49E60);
+    color: #3A220A;  /* پررنگ‌تر برای فونت */
+    border: 4px solid #3A220A;  /* ضخامت و تیرگی بیشتر حاشیه */
+    border-radius: 18px;  /* گوشه‌های گردتر و نرم‌تر */
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #F8E3B6, stop: 1 #B88C4E);
+    border: 4px solid #2A1607;
+    color: #2A1607;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #B88C4E, stop: 1 #8B6A3E);
+    border: 4px solid #1E0E03;
+    color: #1E0E03;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
+}</string>
+        </property>
+        <property name="text">
+         <string> Load Map</string>
         </property>
        </widget>
       </widget>
