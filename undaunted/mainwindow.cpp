@@ -4,6 +4,7 @@
 #include <QRegularExpression>
 #include "board.h"
 #include <QMessageBox>
+#include <QFileDialog>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -32,9 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->game_2->setScene(scene);
     ui->game_2->setRenderHint(QPainter::Antialiasing);
 
-    board* nboard = new board();
-    nboard->pars("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/1.txt");
-    nboard->graphic(scene);
+    nboard = new board();
+
     setWindowState(windowState() | Qt::WindowMaximized);
 
 }
@@ -51,14 +51,29 @@ void MainWindow::on_pushButton_1_clicked()
     // player p1(name1);
     // player p2(name2);
 
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->pushButton_2->show();
+    ui->stackedWidget->setCurrentIndex(3);
 
 }
 
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString file = QFileDialog::getOpenFileName(
+        this, "Select Map", "C:/Users/Flower/Documents/GitHub/Game-project/undaunted", "Text Files (*.txt)"
+        );
+    if (file.isEmpty())
+        return;
+
+    nboard->pars(file);
+    nboard->graphic(ui->game_2->scene());
+
+    ui->pushButton_2->hide();
+}
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete nboard;
 }
 
 
@@ -150,5 +165,7 @@ void MainWindow::showerror()
 
     ui->pushButton_1->setEnabled(player1 && player2);
 }
+
+
 
 
