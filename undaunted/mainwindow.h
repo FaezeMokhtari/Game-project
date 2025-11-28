@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "board.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,8 +23,11 @@ private slots:
     void on_pushButton_1_clicked();
 
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
+    board* nboard = nullptr;
     void showerror();
     bool isValid(const QString& name, QString &errorMsg);
 
