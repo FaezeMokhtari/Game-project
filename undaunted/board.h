@@ -16,8 +16,8 @@ public:
 
     board();
     ~board();
-    void pars(const QString& mapText);
-    void graphic(QGraphicsScene* scene);
+    int pars(const QString& mapText);
+    void graphic(QGraphicsScene* scene,float w,float h);
 };
 
 #endif // BOARD_H
