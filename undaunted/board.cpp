@@ -5,15 +5,17 @@
 #include <QFile>
 #include "Rgraphic.h"
 
-board::board() : scene() {}
+board::board()  {
+    scene = nullptr;
+}
 
-void board::pars(const QString& filename)
+int board::pars(const QString& filename)
 {
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Cannot open file:" << filename;
-        return ;
+        return 0;
     }
 
     QTextStream in(&file);
@@ -55,18 +57,33 @@ void board::pars(const QString& filename)
         }
 
  }
-
+    return 0;
 }
 
 
-void board::graphic(QGraphicsScene* scn)
+void board::graphic(QGraphicsScene* scn,float w,float h)
 {
     scene = scn;
+
+    if (!scene) return;
+
+    // حذف آیتم‌های قبلی مرتبط با board
+    QList<QGraphicsItem*> itemsToRemove = scene->items();
+    for (QGraphicsItem* item : itemsToRemove) {
+        Rgraphic* rg = dynamic_cast<Rgraphic*>(item);
+        if (rg) {
+            scene->removeItem(rg);
+            delete rg;
+        }
+    }
+
     for (int i = 0; i < grid.size(); ++i) {
         rectangle* r = new rectangle(grid[i]->n, grid[i]->x, grid[i]->y, grid[i]->s, grid[i]->r);
         R.push_back(r);
 
         Rgraphic* g = new Rgraphic(r);
+        g->setw(w);
+        g->seth(h);
         scene->addItem(g);
     }
 }
@@ -84,5 +101,15 @@ board::~board()
     }
     R.clear();
 
+    if (scene) {
+        QList<QGraphicsItem*> itemsToRemove = scene->items();
+        for (QGraphicsItem* item : itemsToRemove) {
+            Rgraphic* rg = dynamic_cast<Rgraphic*>(item);
+            if (rg) {
+                scene->removeItem(rg);
+                delete rg;
+            }
+        }
+    }
 
 }
