@@ -330,7 +330,44 @@ QPushButton:pressed {
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="page_2">
+       <widget class="QGraphicsView" name="graphicsView">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>71</y>
+          <width>1321</width>
+          <height>541</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="nextButton">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>620</y>
+          <width>83</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="prevButton">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>630</y>
+          <width>83</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="game">
        <property name="styleSheet">
         <string notr="true">#game {
@@ -346,9 +383,9 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>50</y>
+          <y>30</y>
           <width>1131</width>
-          <height>651</height>
+          <height>671</height>
          </rect>
         </property>
         <property name="font">
