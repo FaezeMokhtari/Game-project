@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "board.h"
+#include <QGraphicsView>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,7 +22,8 @@ public:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_1_clicked();
-
+    void on_prevButton_clicked();
+    void on_nextButton_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -31,5 +33,16 @@ private:
     void showerror();
     bool isValid(const QString& name, QString &errorMsg);
 
+    QString selectedMapPath;
+    QStringList mapFiles;
+    int currentMapIndex = 0;
+
+    QGraphicsScene* mapScene = nullptr;
+
+    void loadMapList();
+    void renderMap(QString path);
+
+    bool eventFilter(QObject* obj, QEvent* event);
+    void updateMapButtons();
 };
 #endif // MAINWINDOW_H
