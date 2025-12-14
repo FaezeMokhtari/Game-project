@@ -13,7 +13,7 @@ public:
     QVector<rectangle*> R;
     QVector<cell*> grid;
     QGraphicsScene* scene;
-
+    float numberofh;
     board();
     ~board();
     int pars(const QString& mapText);
