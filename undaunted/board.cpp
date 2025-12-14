@@ -28,6 +28,8 @@ int board::pars(const QString& filename)
     }
     file.close();
 
+    numberofh = lines.size();
+
     for (int visualRow = 0; visualRow < lines.size(); ++visualRow) {
 
         QString line = lines[visualRow];
@@ -60,30 +62,43 @@ int board::pars(const QString& filename)
     return 0;
 }
 
-
 void board::graphic(QGraphicsScene* scn,float w,float h)
 {
     scene = scn;
-
     if (!scene) return;
 
-    // حذف آیتم‌های قبلی مرتبط با board
-    QList<QGraphicsItem*> itemsToRemove = scene->items();
-    for (QGraphicsItem* item : itemsToRemove) {
-        Rgraphic* rg = dynamic_cast<Rgraphic*>(item);
-        if (rg) {
-            scene->removeItem(rg);
-            delete rg;
-        }
-    }
+    float spacing = 4.0f;
+    float newh = (h-numberofh*spacing)/numberofh;
+    for (auto* c : grid) {
 
-    for (int i = 0; i < grid.size(); ++i) {
-        rectangle* r = new rectangle(grid[i]->n, grid[i]->x, grid[i]->y, grid[i]->s, grid[i]->r);
+        rectangle* r = new rectangle(
+            c->n,
+            c->x,
+            c->y,
+            c->s,
+            c->r
+            );
         R.push_back(r);
 
         Rgraphic* g = new Rgraphic(r);
+
         g->setw(w);
-        g->seth(h);
+        g->seth(newh);
+
+        float xPos = r->x * (w + spacing);
+        float yPos = r->y * (newh + spacing);
+
+        if (r->y % 2 != 0)
+            xPos += (w + spacing) / 2.0f;
+        g->setPos(xPos, yPos);
+
+        QString path;
+        if (r->s == 0) path = ":/new/prefix1/1ns.jpg";
+        else if (r->s == 1) path = ":/new/prefix1/2ns.jpg";
+        else path = ":/new/prefix1/3ns.jpg";
+
+        QPixmap pix(path);
+        g->setBackground(pix, pix.rect());
         scene->addItem(g);
     }
 }
