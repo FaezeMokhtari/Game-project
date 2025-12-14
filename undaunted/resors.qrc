@@ -8,5 +8,12 @@
         <file>g.webp</file>
         <file>s.webp</file>
         <file>ss.webp</file>
+        <file>1s.webp</file>
+        <file>2s.webp</file>
+        <file>3s.webp</file>
+        <file>nb.webp</file>
+        <file>1ns.jpg</file>
+        <file>2ns.jpg</file>
+        <file>3ns.jpg</file>
     </qresource>
 </RCC>
