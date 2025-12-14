@@ -118,13 +118,13 @@
       <property name="styleSheet">
        <string notr="true">#page {
   background-color: lightblue; 
-  background-image:  url(:/new/prefix1/bc.png); 
+  background-image:  url(:/new/prefix1/ss.png); 
   background-repeat: no-repeat; 
   background-position: center; 
 }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="wellcome">
        <property name="sizePolicy">
@@ -345,24 +345,30 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>250</x>
-          <y>150</y>
+          <y>170</y>
           <width>991</width>
           <height>571</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">QGraphicsView {
-    border-image: url(:/new/prefix1/ss.webp) 0 0 0 0 stretch stretch;
-    border: 6px solid #3A220A;  
-    border-radius: 10px;        
+         <string notr="true">QGraphicsView  {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #F3D9A4, stop: 1 #C49E60);
+    color: #3A220A;  
+    border: 4px solid #3A220A;  
+    border-radius: 18px;  
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
 }
-
 QGraphicsView:hover {
-    border: 4px solid #2A1607;   
+    border: 6px solid  #6AD84F
+
+; 
 }
 
 QGraphicsView:pressed {
-    border: 4px solid #1E0E03;   
+    border: 4px solid #1E0E03;  
 }
 </string>
         </property>
@@ -371,7 +377,7 @@ QGraphicsView:pressed {
         <property name="geometry">
          <rect>
           <x>1290</x>
-          <y>440</y>
+          <y>460</y>
           <width>83</width>
           <height>81</height>
          </rect>
@@ -379,39 +385,45 @@ QGraphicsView:pressed {
         <property name="font">
          <font>
           <pointsize>30</pointsize>
+          <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #A9F08E, stop: 1 #6AD84F);
-    color: black;
-    border: 3px solid #3F5931;
-    border-radius: 40px;
-    padding: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+                                stop: 0 #F3D9A4, stop: 1 #C49E60);
+    color: #3A220A;  
+    border: 4px solid #3A220A;  
+    border-radius: 40px;  
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 QPushButton:hover {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #B7D99D, stop: 1 #74B158);
+                                stop: 0 #F8E3B6, stop: 1 #B88C4E);
+    border: 4px solid #2A1607;
+    color: #2A1607;
 }
 
 QPushButton:pressed {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #6AA84F, stop: 1 #548235);
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.4); 
+                                stop: 0 #B88C4E, stop: 1 #8B6A3E);
+    border: 4px solid #1E0E03;
+    color: #1E0E03;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
 }</string>
         </property>
         <property name="text">
-         <string>-&gt;</string>
+         <string>&gt;</string>
         </property>
        </widget>
        <widget class="QPushButton" name="prevButton">
         <property name="geometry">
          <rect>
           <x>110</x>
-          <y>440</y>
+          <y>450</y>
           <width>81</width>
           <height>81</height>
          </rect>
@@ -419,52 +431,45 @@ QPushButton:pressed {
         <property name="font">
          <font>
           <pointsize>30</pointsize>
+          <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #A9F08E, stop: 1 #6AD84F);
-    color: black;
-    border: 3px solid #3F5931;
-    border-radius: 40px;
-    padding: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+                                stop: 0 #F3D9A4, stop: 1 #C49E60);
+    color: #3A220A;  
+    border: 4px solid #3A220A;  
+    border-radius: 40px;  
+    padding: 8px 16px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 QPushButton:hover {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #B7D99D, stop: 1 #74B158);
+                                stop: 0 #F8E3B6, stop: 1 #B88C4E);
+    border: 4px solid #2A1607;
+    color: #2A1607;
 }
 
 QPushButton:pressed {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                   stop: 0 #6AA84F, stop: 1 #548235);
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.4); 
+                                stop: 0 #B88C4E, stop: 1 #8B6A3E);
+    border: 4px solid #1E0E03;
+    color: #1E0E03;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
 }</string>
         </property>
         <property name="text">
-         <string>&lt;-</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>462</x>
-          <y>19</y>
-          <width>381</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
+         <string>&lt;</string>
         </property>
        </widget>
       </widget>
       <widget class="QWidget" name="game">
        <property name="styleSheet">
         <string notr="true">#game {
-   background-image: url(:/new/prefix1/g.webp);
+   background-image: url(:/new/prefix1/ss.webp);
          background-repeat: no-repeat;
          background-position: center;
          background-size: contain;
@@ -476,7 +481,7 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>30</y>
+          <y>70</y>
           <width>1131</width>
           <height>671</height>
          </rect>
@@ -489,7 +494,7 @@ QPushButton:pressed {
         <property name="styleSheet">
          <string notr="true">QGraphicsView {
     border: none;
-    background-image: url(:/new/prefix1/g.webp);
+    background-image: url(:/new/prefix1/ss.webp);
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content;
