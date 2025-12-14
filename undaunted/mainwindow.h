@@ -25,11 +25,10 @@ private slots:
     void on_prevButton_clicked();
     void on_nextButton_clicked();
 
-    void on_pushButton_2_clicked();
-
 private:
     Ui::MainWindow *ui;
     board* nboard = nullptr;
+    board* pboard = nullptr;
     void showerror();
     bool isValid(const QString& name, QString &errorMsg);
 
