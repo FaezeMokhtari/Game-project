@@ -194,7 +194,7 @@ void MainWindow::renderMap(QString path)
         return;
     }
 
-    pboard->graphic(mapScene, 10, 20);
+    pboard->graphic(mapScene, 55, 510);
 
 }
 
@@ -240,7 +240,7 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
         nboard = new board();
 
         nboard->pars(selectedMapPath);
-        nboard->graphic(ui->game_2->scene(),160,120);
+        nboard->graphic(ui->game_2->scene(),80,671);
 
         ui->stackedWidget->setCurrentIndex(3);
         return true;
