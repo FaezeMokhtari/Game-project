@@ -35,17 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->game_2->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->installEventFilter(this);
 
-    if (nboard) {
-        delete nboard;
-        nboard = nullptr;
-    }
-    nboard = new board();
-    loadMapList();
-
-    nboard->pars(selectedMapPath);
-    nboard->graphic(ui->game_2->scene(),160,120);
-
-
+      loadMapList();
+      ui->graphicsView->setMouseTracking(true);
     setWindowState(windowState() | Qt::WindowMaximized);
 
 }
@@ -62,24 +53,10 @@ void MainWindow::on_pushButton_1_clicked()
     // player p1(name1);
     // player p2(name2);
 
-    ui->pushButton_2->show();
     ui->stackedWidget->setCurrentIndex(2);
 
 }
 
-void MainWindow::on_pushButton_2_clicked()
-{
-//    QString file = QFileDialog::getOpenFileName(
-//        this, "Select Map", "C:/Users/Flower/Documents/GitHub/Game-project/undaunted", "Text Files (*.txt)"
-//        );
-//    if (file.isEmpty())
-//        return;
-
-//    nboard->pars(file);
-//    nboard->graphic(ui->game_2->scene());
-
-//    ui->pushButton_2->hide();
-}
 
 MainWindow::~MainWindow()
 {
@@ -188,7 +165,6 @@ void MainWindow::loadMapList()
         return;
     }
 
-
     currentMapIndex = 0;
 
     QString fullPath = dir.absoluteFilePath(mapFiles[currentMapIndex]);
@@ -198,41 +174,28 @@ void MainWindow::loadMapList()
 
 void MainWindow::renderMap(QString path)
 {
-    qDebug() << "Rendering map:" << path;
 
 
-    if (mapScene) {
-        ui->graphicsView->setScene(nullptr);
-        delete mapScene;
-        mapScene = nullptr;
-        qDebug() << "Previous mapScene deleted";
-    }
-
-
-    mapScene = new QGraphicsScene(this);
+    mapScene = new QGraphicsScene(ui->graphicsView);
     ui->graphicsView->setScene(mapScene);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
 
-    if (nboard) {
-        delete nboard;
-        nboard = nullptr;
-        qDebug() << "Previous board deleted";
+
+
+    if (pboard) {
+        delete pboard;
+        pboard = nullptr;
     }
 
-
-    nboard = new board();
-    int res = nboard->pars(path);
-    if (res != 0) {
-        qWarning() << "Error parsing map:" << path;
+    pboard = new board();
+    if (pboard->pars(path) != 0) {
+        qWarning() << "Preview map parse failed";
         return;
     }
 
-    nboard->graphic(mapScene,10,20);
-    qDebug() << "Board rendered successfully";
+    pboard->graphic(mapScene, 10, 20);
 
-
-    ui->graphicsView->setMouseTracking(true);
 }
 
 void MainWindow::updateMapButtons()
@@ -268,9 +231,16 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
 {
     if (obj == ui->graphicsView && event->type() == QEvent::MouseButtonPress)
     {
-        selectedMapPath =
-            "C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/" +
-            mapFiles[currentMapIndex];
+        QString fullPath = QDir("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/").absoluteFilePath(mapFiles[currentMapIndex]);
+        selectedMapPath = fullPath;
+        if (nboard) {
+            delete nboard;
+            nboard = nullptr;
+        }
+        nboard = new board();
+
+        nboard->pars(selectedMapPath);
+        nboard->graphic(ui->game_2->scene(),160,120);
 
         ui->stackedWidget->setCurrentIndex(3);
         return true;
