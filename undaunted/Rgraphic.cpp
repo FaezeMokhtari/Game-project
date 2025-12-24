@@ -37,6 +37,8 @@ void Rgraphic::updateAppearance()
         setBrush(backgroundBrush);
     else
         setBrush(Qt::darkGray);
+
+     setPen(borderPen);
 }
 
 void Rgraphic::setBackground(const QPixmap& pixmap, const QRect& sourceRect)
