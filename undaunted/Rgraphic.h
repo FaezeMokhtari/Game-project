@@ -2,9 +2,6 @@
 #define RGRAPHIC_H
 
 #include "rectangle.h"
-#include <QGraphicsPathItem>
-#include <QBrush>
-#include <QPen>
 #include <QPixmap>
 
 class Rgraphic : public QGraphicsPathItem
@@ -17,11 +14,11 @@ public:
 
     void setBackground(const QPixmap& pixmap, const QRect& sourceRect);
     void updateAppearance();
-
+    QPen borderPen;
 private:
     rectangle* model;
     QBrush backgroundBrush;
-    QPen borderPen;
+
 
     QGraphicsTextItem* label = nullptr;
 
