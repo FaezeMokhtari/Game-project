@@ -5,16 +5,22 @@
 #include <QBrush>
 #include <QPen>
 
+
 class rectangle
 {
 public:
-    int n;
     int x;
     int y;
     int s;
-    char r;
+    QString name;
+    bool control;
+    bool mark;
+    bool scout;
+    bool seargeant;
+    bool sniper;
+    QString player;
 
-    rectangle(int nn, int nx, int ny, int ns, char nr);
+    rectangle( int nx, int ny, int ns, QString nname);
     friend class board;
 };
 
