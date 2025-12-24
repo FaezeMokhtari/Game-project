@@ -118,13 +118,13 @@
       <property name="styleSheet">
        <string notr="true">#page {
   background-color: lightblue; 
-  background-image:  url(:/new/prefix1/ss.png); 
+  background-image:  url(:/new/prefix1/s.webp); 
   background-repeat: no-repeat; 
   background-position: center; 
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="wellcome">
        <property name="sizePolicy">
@@ -296,7 +296,7 @@ QPushButton:pressed {
          <rect>
           <x>290</x>
           <y>575</y>
-          <width>331</width>
+          <width>361</width>
           <height>51</height>
          </rect>
         </property>
@@ -305,6 +305,12 @@ QPushButton:pressed {
           <family>Titr</family>
           <pointsize>10</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel#errorLabel {
+    color: red;
+}
+</string>
         </property>
         <property name="text">
          <string>TextLabel</string>
@@ -315,7 +321,7 @@ QPushButton:pressed {
          <rect>
           <x>825</x>
           <y>575</y>
-          <width>301</width>
+          <width>311</width>
           <height>51</height>
          </rect>
         </property>
@@ -324,6 +330,12 @@ QPushButton:pressed {
           <family>Titr</family>
           <pointsize>10</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel#errorLabel {
+    color: red;
+}
+</string>
         </property>
         <property name="text">
          <string>TextLabel</string>
@@ -480,9 +492,9 @@ QPushButton:pressed {
        <widget class="QGraphicsView" name="game_2">
         <property name="geometry">
          <rect>
-          <x>190</x>
+          <x>340</x>
           <y>70</y>
-          <width>1131</width>
+          <width>881</width>
           <height>671</height>
          </rect>
         </property>
