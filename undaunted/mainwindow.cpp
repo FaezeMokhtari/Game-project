@@ -21,23 +21,23 @@ MainWindow::MainWindow(QWidget *parent)
     ui->errorLabel1->hide();
     ui->errorLabel2->hide();
 
-    connect(ui->lineEdit_2, &QLineEdit::textChanged, this, [this](const QString &){
-        showerror();
-    });
+
 
     connect(ui->lineEdit, &QLineEdit::textChanged, this, [this](const QString &){
         showerror();
     });
+    connect(ui->lineEdit_2, &QLineEdit::textChanged, this, [this](const QString &){
+        showerror();
+    });
 
-
-    QGraphicsScene* scene = new QGraphicsScene(this);
-    ui->game_2->setScene(scene);
+    screen =new QGraphicsScene(ui->game_2);
+    ui->game_2->setScene(screen);
     ui->game_2->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->installEventFilter(this);
 
       loadMapList();
       ui->graphicsView->setMouseTracking(true);
-    setWindowState(windowState() | Qt::WindowMaximized);
+
 
 }
 
@@ -48,46 +48,33 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_1_clicked()
 {
-    QString name1 = ui->lineEdit_2->text().trimmed();
-    QString name2 = ui->lineEdit->text().trimmed();
+    QString name1 = ui->lineEdit_2->text();
+    QString name2 = ui->lineEdit->text();
     // player p1(name1);
     // player p2(name2);
+    QString a , b;
+    if(isValid(name1, a ) && isValid(name2, b) ){ui->stackedWidget->setCurrentIndex(2);}
 
-    ui->stackedWidget->setCurrentIndex(2);
-
-}
-
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-    delete nboard;
 }
 
 
 bool MainWindow::isValid(const QString &name, QString &error)
 {
     error.clear();
-
-    if (name.isEmpty()) {
-        error = "Name must not be empty.";
-        return false;
-    }
-
-    if (!name[0].isLetter()) {
-        error = "Name must start with a letter.";
-        return false;
-    }
-
     if (name.length() < 8) {
-        error = "Name must be at least 8 characters long.";
-        return false;
+        error = "Name must be at least 8 characters.";
+     return false;}
+
+ if (name.isEmpty()) {
+        error = "Name must not be empty.";
+     return false;
     }
 
-    bool number = false;
-    bool Upper = false;
-    bool Lower = false;
-    bool Special = false;
+  if (!name[0].isLetter()) {
+        error = "Name must start with a letter.";
+    return false;}
+
+    bool number = false , Upper = false ,Lower = false , Special = false ;
 
     for (int i = 0; i < name.length(); i++)
     {
@@ -96,28 +83,25 @@ bool MainWindow::isValid(const QString &name, QString &error)
         if (ch.isDigit())
             number = true;
         else if (ch.isUpper())
-            Upper = true;
+          Upper = true;
         else if (ch.isLower())
-            Lower = true;
+         Lower = true;
         else
-            Special = true;
+         Special = true;
     }
 
     if (!number) {
         error = "Name must contain at least one number.";
         return false;
     }
-
     if (!Upper) {
         error = "Name must contain at least one uppercase letter.";
         return false;
     }
-
     if (!Lower) {
         error = "Name must contain at least one lowercase letter.";
         return false;
     }
-
     if (!Special) {
         error = "Name must contain at least one special character.";
         return false;
@@ -134,24 +118,23 @@ void MainWindow::showerror()
 
     QString error1, error2;
 
-    bool player1 = isValid(name1, error1);
-    bool player2 = isValid(name2, error2);
+    bool player1name = isValid(name1, error1);
+    bool player2name = isValid(name2, error2);
 
-    if (!player1) {
+    if (!player1name) {
         ui->errorLabel1->setText(error1);
         ui->errorLabel1->show();
     } else {
         ui->errorLabel1->hide();
     }
 
-    if (!player2) {
+    if (!player2name) {
         ui->errorLabel2->setText(error2);
         ui->errorLabel2->show();
     } else {
         ui->errorLabel2->hide();
     }
 
-    ui->pushButton_1->setEnabled(player1 && player2);
 }
 
 
@@ -161,7 +144,6 @@ void MainWindow::loadMapList()
     mapFiles = dir.entryList({"*.txt"}, QDir::Files);
 
     if (mapFiles.isEmpty()) {
-        QMessageBox::warning(this, "Error", "No map files found!");
         return;
     }
 
@@ -169,7 +151,6 @@ void MainWindow::loadMapList()
 
     QString fullPath = dir.absoluteFilePath(mapFiles[currentMapIndex]);
     renderMap(fullPath);
-    updateMapButtons();
 }
 
 void MainWindow::renderMap(QString path)
@@ -189,8 +170,8 @@ void MainWindow::renderMap(QString path)
     }
 
     pboard = new board();
-    if (pboard->pars(path) != 0) {
-        qWarning() << "Preview map parse failed";
+    if (pboard->pars(path) != 1) {
+        qWarning() << " map parse failed";
         return;
     }
 
@@ -198,22 +179,12 @@ void MainWindow::renderMap(QString path)
 
 }
 
-void MainWindow::updateMapButtons()
-{
-
-    bool hasMaps = !mapFiles.isEmpty();
-    ui->nextButton->setEnabled(hasMaps && currentMapIndex < mapFiles.size() - 1);
-    ui->prevButton->setEnabled(hasMaps && currentMapIndex > 0);
-}
-
-
 void MainWindow::on_nextButton_clicked()
 {
     if (currentMapIndex < mapFiles.size() - 1) {
         currentMapIndex++;
         QString fullPath = QDir("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/").absoluteFilePath(mapFiles[currentMapIndex]);
         renderMap(fullPath);
-        updateMapButtons();
     }
 }
 
@@ -223,7 +194,6 @@ void MainWindow::on_prevButton_clicked()
         currentMapIndex--;
         QString fullPath = QDir("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/").absoluteFilePath(mapFiles[currentMapIndex]);
         renderMap(fullPath);
-        updateMapButtons();
     }
 }
 
@@ -231,21 +201,24 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
 {
     if (obj == ui->graphicsView && event->type() == QEvent::MouseButtonPress)
     {
-        QString fullPath = QDir("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/").absoluteFilePath(mapFiles[currentMapIndex]);
-        selectedMapPath = fullPath;
-        if (nboard) {
-            delete nboard;
-            nboard = nullptr;
-        }
+        selectedMapPath = QDir("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/Maps/").absoluteFilePath(mapFiles[currentMapIndex]);
+
         nboard = new board();
 
         nboard->pars(selectedMapPath);
-        nboard->graphic(ui->game_2->scene(),80,671);
+        nboard->seting("C:/Users/Flower/Documents/GitHub/Game-project/undaunted/1.txt");
+        nboard->graphic(screen,80,671);
 
         ui->stackedWidget->setCurrentIndex(3);
         return true;
     }
-    return QMainWindow::eventFilter(obj, event);
+     return QMainWindow::eventFilter(obj, event);
 }
 
 
+MainWindow::~MainWindow()
+{
+    delete ui;
+    delete nboard;
+    delete pboard;
+}
