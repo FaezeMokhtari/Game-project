@@ -37,11 +37,11 @@ private:
     int currentMapIndex = 0;
 
     QGraphicsScene* mapScene = nullptr;
+    QGraphicsScene* screen = nullptr;
 
     void loadMapList();
     void renderMap(QString path);
 
     bool eventFilter(QObject* obj, QEvent* event);
-    void updateMapButtons();
 };
 #endif // MAINWINDOW_H
