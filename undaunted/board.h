@@ -12,12 +12,14 @@ class board
 public:
     QVector<rectangle*> R;
     QVector<cell*> grid;
-    QGraphicsScene* scene;
+    QGraphicsScene* screen;
     float numberofh;
     board();
     ~board();
     int pars(const QString& mapText);
-    void graphic(QGraphicsScene* scene,float w,float h);
+    void graphic(QGraphicsScene* screen,float w,float h);
+    int seting(const QString& setText);
+    QString bac(int i);
 };
 
 #endif // BOARD_H
